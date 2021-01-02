@@ -9,6 +9,7 @@ const connection = mongoose.connection;
 connection.once("open", function() {
   console.log("MongoDB database connection established successfully");
 });
+mongoose.set('useFindAndModify', false);
 
 // Sets up the express app
 const app = express();

@@ -61,27 +61,27 @@ router.post('/', function(req, res) {
 
 // Get a specific villager
 router.get('/:id', async function(req, res) {
-  villager = await Villager.findbyId(req.params.id);
-  res.json(villager.json);
+  villager = await Villager.findById(req.params.id);
+  res.json(villager);
 });
 
 // Update a villager by passing an *entire* villager record
 router.put('/:id', async function(req, res) {
-  villager = await Villager.findByIdAndUpdate(req.params.id, options={new: true, overwrite: true});
+  villager = await Villager.findByIdAndUpdate(req.params.id, req.body, options={new: true, overwrite: true});
   // respond with the modified record
-  res.json(villager.json);
+  res.json(villager);
 });
 
 // Update a villager by passing a partial villager record
 router.patch('/:id', async function(req, res) {
-  villager = await Villager.findByIdAndUpdate(req.params.id, options={new: true});
+  villager = await Villager.findByIdAndUpdate(req.params.id, req.body, options={new: true});
   // respond with the modified record
-  res.json(villager.json);
+  res.json(villager);
 });
 
 // Delete a villager
 router.delete('/:id', async function(req, res) {
-  villager = await Villager.findbyIdAndRemove(req.params.id);
+  villager = await Villager.findByIdAndDelete(req.params.id);
   // respond with the deleted record
   res.json(villager);
 });
