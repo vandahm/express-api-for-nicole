@@ -44,7 +44,7 @@ const Villager = require('../models/villager');
 // Get every villager
 router.get('/', async function(req, res) {
   // Fetch every villager in MongoDB
-  villagers = await Villager.find({});
+  let villagers = await Villager.find({});
 
   // Update the response object with the JSON
   res.json(villagers);
